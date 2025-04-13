@@ -15,6 +15,7 @@
 - Docker / Docker Compose
 
 ## Структура
+<<<<<<< HEAD
 
 ```text
 lab3/ 
@@ -33,6 +34,11 @@ lab3/
 │ ├── requirements.txt 
 │ └── Dockerfile
 ```
+=======
+`
+lab3/ ├── docker-compose.yaml ├── user_service/ │ ├── main.py │ ├── models.py │ ├── db.py │ ├── cache.py │ ├── producer.py │ ├── requirements.txt │ └── Dockerfile ├── notification_service/ │ ├── consumer.py │ ├── requirements.txt │ └── Dockerfile
+`
+>>>>>>> 482329a4e168c6b1d759a8b53c8049e7719be44f
 
 ## Архитектура
 
