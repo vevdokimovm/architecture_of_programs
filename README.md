@@ -4,6 +4,7 @@
 
 # Технологии
 
+```bash
 Python 3.10+
 Docker, Docker Compose
 FastAPI
@@ -13,3 +14,4 @@ Redis (KeyDB)
 SQLAlchemy
 REST API, кэширование, микросервисы
 Архитектура событий
+```
