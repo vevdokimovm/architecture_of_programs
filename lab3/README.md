@@ -15,9 +15,9 @@
 - Docker / Docker Compose
 
 ## Структура
-
+`
 lab3/ ├── docker-compose.yaml ├── user_service/ │ ├── main.py │ ├── models.py │ ├── db.py │ ├── cache.py │ ├── producer.py │ ├── requirements.txt │ └── Dockerfile ├── notification_service/ │ ├── consumer.py │ ├── requirements.txt │ └── Dockerfile
-
+`
 
 ## Архитектура
 
