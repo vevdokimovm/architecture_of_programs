@@ -1,6 +1,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from app.models import Base, EventModel
+import json
+from decimal import Decimal
 
 # Создаём движок SQLite
 engine = create_engine(
@@ -8,7 +10,6 @@ engine = create_engine(
     connect_args={"check_same_thread": False}
 )
 
-# Отключаем expire_on_commit, чтобы объекты не «протухали» после коммита
 SessionLocal = sessionmaker(bind=engine, autoflush=False, expire_on_commit=False)
 
 def init_db():
@@ -20,10 +21,19 @@ class EventStore:
 
     def append(self, aggregate_id: str, event_type: str, data: dict):
         db = self.Session()
+
+        # сериализуем Decimal -> str (иначе SQLite JSON сломается)
+        def convert(o):
+            if isinstance(o, Decimal):
+                return str(o)
+            return o
+
+        clean_data = json.loads(json.dumps(data, default=convert))
+
         ev = EventModel(
             aggregate_id=aggregate_id,
             event_type=event_type,
-            event_data=data
+            event_data=clean_data
         )
         db.add(ev)
         db.commit()
